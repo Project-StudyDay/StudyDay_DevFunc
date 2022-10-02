@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>서울특별시의 여고 검색!</h1>
+		<template id="resultstemplate">
+			<option>경기여자고등학교</option>
+			<option>경기여자상업고등학교</option>
+			<option>경복여자고등학교</option>
+			<option>경희여자고등학교</option>
+			<option>광영여자고등학교</option>
+			<option>금옥여자고등학교</option>
+			<option>대원여자고등학교[2]</option>
+			<option>대진여자고등학교</option>
+			<option>덕성여자고등학교</option>
+			<option>덕원여자고등학교</option>
+			<option>동국대학교사범대학부속여자고등학교</option>
+			<option>동덕여자고등학교</option>
+			<option>동명여자고등학교</option>
+			<option>동명여자정보산업고등학교</option>
+			<option>동일여자고등학교</option>
+			<option>동일여자상업고등학교</option>
+			<option>명덕여자고등학교</option>
+			<option>명일여자고등학교</option>
+			<option>목동고등학교</option>
+			<option>무학여자고등학교</option>
+			<option>미림여자고등학교</option>
+			<option>미림여자정보과학고등학교</option>
+			<option>배화여자고등학교</option>
+			<option>보성여자고등학교</option>
+			<option>상명대학교사범대학부속여자고등학교</option>
+			<option>상일여자고등학교</option>
+			<option>서문여자고등학교</option>
+			<option>서울문영여자고등학교</option>
+			<option>서울여자고등학교</option>
+			<option>서울여자상업고등학교</option>
+			<option>서울중앙여자고등학교[5]</option>
+			<option>선일여자고등학교</option>
+			<option>선일이비즈니스고등학교</option>
+			<option>선정관광고등학교</option>
+			<option>성동글로벌경영고등학교[6]</option>
+			<option>성신여자고등학교</option>
+			<option>성심여자고등학교</option>
+			<option>세그루패션디자인고등학교</option>
+			<option>세화여자고등학교</option>
+			<option>송곡관광고등학교</option>
+			<option>송곡여자고등학교</option>
+			<option>숙명여자고등학교</option>
+			<option>수도여자고등학교</option>
+			<option>숭의여자고등학교</option>
+			<option>신광여자고등학교</option>
+			<option>신정여자상업고등학교</option>
+			<option>여의도여자고등학교</option>
+			<option>연희미용고등학교</option>
+			<option>염광여자메디텍고등학교</option>
+			<option>영등포여자고등학교</option>
+			<option>영신간호비즈니스고등학교</option>
+			<option>영신여자고등학교</option>
+			<option>영파여자고등학교</option>
+			<option>예림디자인고등학교[7]</option>
+			<option>예일여자고등학교</option>
+			<option>예일디자인고등학교</option>
+			<option>오류고등학교[8]</option>
+			<option>용화여자고등학교</option>
+			<option>은광여자고등학교</option>
+			<option>이화여자고등학교[9]</option>
+			<option>이화여자대학교병설미디어고등학교</option>
+			<option>이화여자외국어고등학교[10]</option>
+			<option>일신여자상업고등학교</option>
+			<option>잠실여자고등학교</option>
+			<option>정신여자고등학교</option>
+			<option>정의여자고등학교</option>
+			<option>정화여자상업고등학교</option>
+			<option>중앙여자고등학교</option>
+			<option>진명여자고등학교</option>
+			<option>진선여자고등학교</option>
+			<option>창덕여자고등학교</option>
+			<option>창문여자고등학교</option>
+			<option>청원여자고등학교</option>
+			<option>한성여자고등학교</option>
+			<option>해성여자고등학교</option>
+			<option>해성국제컨벤션고등학교</option>
+			<option>혜성여자고등학교</option>
+			<option>혜원여자고등학교</option>
+			<option>혜화여자고등학교</option>
+			<option>홍익디자인고등학교</option>
+			<option>홍익대학교 사범대학 부속여자고등학교</option>
+			<option>화곡보건경영고등학교</option>
+			<option>휘경여자고등학교</option>
+		</template>
+		<input type="text" name="search" id="search" placeholder="학교 입력" list="searchresults" autocomplete="off" />
+		<datalist id="searchresults"></datalist>
+		<script text="javascript">
+			var search = document.querySelector("#search");
+			var results = document.querySelector("#searchresults");
+			var templateContent = document.querySelector("#resultstemplate").content;
+			search.addEventListener("keyup", function handler(event) {
+				while (results.children.length) results.removeChild(results.firstChild);
+				var inputVal = new RegExp(search.value.trim(), "i");
+				var set = Array.prototype.reduce.call(
+					templateContent.cloneNode(true).children,
+					function searchFilter(frag, item, i) {
+						if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+						return frag;
+					},
+					document.createDocumentFragment()
+				);
+				results.appendChild(set);
+			});
+		</script>
+	</body>
+</html>
